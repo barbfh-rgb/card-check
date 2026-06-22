@@ -1,0 +1,24 @@
+{
+  "name": "Card Check",
+  "short_name": "Cards",
+  "description": "A private Swiss 1JJ Tarot reference tool.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fdf7dc",
+  "theme_color": "#bf9b30",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

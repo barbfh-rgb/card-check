@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#bf9b30">
+    <meta name="description" content="Card Check is a private reference app for Swiss 1JJ Tarot readings.">
+    <title>Card Check</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Swiss 1JJ Tarot</p>
+        <h1>Card Check</h1>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel deck-panel" aria-labelledby="deck-title">
+        <div class="section-heading">
+          <span class="diamond" aria-hidden="true"></span>
+          <div>
+            <h2 id="deck-title">Deck</h2>
+            <p>Select the cards that are already on the table.</p>
+          </div>
+        </div>
+
+        <div class="filters" aria-label="Filter cards">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="major" aria-pressed="false">Majeurs</button>
+          <button class="filter-button" type="button" data-filter="Bâtons" aria-pressed="false">Bâtons</button>
+          <button class="filter-button" type="button" data-filter="Coupes" aria-pressed="false">Coupes</button>
+          <button class="filter-button" type="button" data-filter="Épées" aria-pressed="false">Épées</button>
+          <button class="filter-button" type="button" data-filter="Deniers" aria-pressed="false">Deniers</button>
+        </div>
+
+        <label class="search-label" for="card-search">Search by name or numeral</label>
+        <input id="card-search" class="search-input" type="search" autocomplete="off" spellcheck="false">
+
+        <div id="deck-grid" class="deck-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="panel reading-panel" aria-labelledby="reading-title">
+        <div class="section-heading">
+          <span class="diamond" aria-hidden="true"></span>
+          <div>
+            <h2 id="reading-title">Reading</h2>
+            <p id="reading-count">No cards selected.</p>
+          </div>
+        </div>
+
+        <div class="tray-actions">
+          <button id="clear-reading" class="plain-button" type="button" disabled>Clear reading</button>
+        </div>
+
+        <ol id="reading-tray" class="reading-tray" aria-label="Selected cards"></ol>
+      </section>
+
+      <section class="panel message-panel" aria-labelledby="message-title">
+        <div class="section-heading">
+          <span class="diamond" aria-hidden="true"></span>
+          <div>
+            <h2 id="message-title">Overall message</h2>
+            <p>Reveal a deterministic synthesis of the selected cards.</p>
+          </div>
+        </div>
+
+        <button id="reveal-message" class="primary-button" type="button" disabled>Reveal the message</button>
+        <div id="message-output" class="message-output" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
