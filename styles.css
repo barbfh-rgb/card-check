@@ -182,6 +182,34 @@ main {
   margin-top: 1.2rem;
 }
 
+.card-preview {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+.card-preview[hidden] {
+  display: none;
+}
+
+.card-preview h3 {
+  margin: 0 0 0.55rem;
+  padding: 0;
+  border: 0;
+}
+
+.card-preview p {
+  margin: 0;
+}
+
+.card-preview .preview-note {
+  margin-top: 0.55rem;
+  color: var(--brown-soft);
+  font-weight: 700;
+}
+
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9.75rem, 1fr));

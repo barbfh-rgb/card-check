@@ -2,6 +2,7 @@ const state = {
   filter: "all",
   search: "",
   reading: [],
+  activeCardId: null,
   messageRevealed: false
 };
 
@@ -13,6 +14,7 @@ const readingCount = document.querySelector("#reading-count");
 const clearButton = document.querySelector("#clear-reading");
 const revealButton = document.querySelector("#reveal-message");
 const messageOutput = document.querySelector("#message-output");
+const cardPreview = document.querySelector("#card-preview");
 
 const elementTone = {
   Feu: {
@@ -117,6 +119,7 @@ function createCardButton(card) {
 
 function renderDeck() {
   deckGrid.replaceChildren();
+  renderCardPreview();
   const visibleCards = getVisibleCards();
 
   if (!visibleCards.length) {
@@ -165,7 +168,9 @@ function addCard(cardId) {
     instanceId: `${cardId}-${Date.now()}-${state.reading.length}`,
     cardId
   });
+  state.activeCardId = cardId;
   state.messageRevealed = false;
+  renderDeck();
   renderReading();
 }
 
@@ -230,6 +235,30 @@ function renderReading() {
   } else {
     messageOutput.textContent = "";
   }
+}
+
+function renderCardPreview() {
+  cardPreview.replaceChildren();
+  if (!state.activeCardId) {
+    cardPreview.hidden = true;
+    return;
+  }
+
+  const card = CARD_DATA.find((item) => item.id === state.activeCardId);
+  if (!card) {
+    cardPreview.hidden = true;
+    return;
+  }
+
+  cardPreview.hidden = false;
+  const heading = document.createElement("h3");
+  heading.textContent = displayTitle(card);
+  const meaning = document.createElement("p");
+  meaning.textContent = card.upright;
+  const note = document.createElement("p");
+  note.className = "preview-note";
+  note.textContent = "Added to the reading.";
+  cardPreview.append(heading, meaning, note);
 }
 
 function joinWords(items) {
@@ -352,7 +381,9 @@ searchInput.addEventListener("input", () => {
 
 clearButton.addEventListener("click", () => {
   state.reading = [];
+  state.activeCardId = null;
   state.messageRevealed = false;
+  renderDeck();
   renderReading();
 });
 
