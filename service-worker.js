@@ -1,11 +1,11 @@
-const CACHE_NAME = "card-check-v2";
+const CACHE_NAME = "card-check-v3";
 
 const APP_SHELL = [
   "/",
   "index.html",
-  "styles.css",
-  "data.js",
-  "app.js",
+  "styles.css?v=2",
+  "data.js?v=2",
+  "app.js?v=2",
   "manifest.json",
   "icons/icon-192.png",
   "icons/icon-512.png"
